@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="foodViewModel"
+            type="com.nacoda.foodapi.viewmodel.FoodViewModel" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:visibility="gone"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/montez"
+                    android:text="@string/food"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/text_50sp" />
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_50dp"
+                    android:padding="@dimen/dimen_8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dimen_8dp"
+                    android:layout_height="@dimen/dimen_50dp"
+                    android:layout_alignParentRight="true"
+                    android:onClick="@{foodViewModel::onRefreshClick}"
+                    android:src="@drawable/ic_refresh" />
+            </RelativeLayout>
+
+
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/material_design_horizontal_progressbar"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:indeterminate="true"
+                app:mpb_progressStyle="horizontal"
+                app:visibility="@{foodViewModel.peopleProgress}" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_food"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:scrollbars="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:visibility="@{foodViewModel.peopleRecycler}"
+                tools:listitem="@layout/food_row" />
+
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

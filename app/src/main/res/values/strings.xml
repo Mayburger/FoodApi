@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MoviesTMDB-MVVM</string>
+
+    <string name="food_outstate_key">food_key</string>
+    <string name="food_response_key">food_response_key</string>
+    <string name="food">Food</string>
+</resources>
